@@ -1,0 +1,4 @@
+[run]
+omit =
+    djblog/migrations/*
+    djblog/admin.py
