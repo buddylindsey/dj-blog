@@ -21,9 +21,6 @@ class CategoryMixinTest(TestCase):
     def tearDown(self):
         self.mock.UnsetStubs()
 
-    def test_get_context_data(self):
-        pass
-
     def test_get_category(self):
         category = mommy.make(Category, name='hello')
         self.view.kwargs['slug'] = 'hello'

@@ -29,13 +29,6 @@ class ArticleViewTest(TestCase):
 class CategoryViewTest(TestCase):
     def setUp(self):
         self.view = CategoryView()
-        self.view.object_list = {}
-        self.view.object = object
-        self.view.kwargs = {}
-        self.mock = mox.Mox()
-
-    def tearDown(self):
-        self.mock.UnsetStubs()
 
     def test_attrs(self):
         self.assertEqual(self.view.model, Article)

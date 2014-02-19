@@ -2,6 +2,12 @@
 dj-blog
 =============================
 
+.. image:: https://travis-ci.org/buddylindsey/dj-blog.png?branch=master
+        :target: https://travis-ci.org/buddylindsey/dj-blog
+
+.. image:: https://pypip.in/d/dj-blog/badge.png
+        :target: https://pypi.python.org/pypi/dj-blog/0.1.0
+
 Minimal blog that gets you started.
 
 Documentation

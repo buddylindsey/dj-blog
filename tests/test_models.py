@@ -20,8 +20,13 @@ class ArticleTest(TestCase):
 
         self.assertTrue(article.is_published())
 
+    def test_is_not_published(self):
+        article = mommy.make('djblog.Article', status=0)
+
+        self.assertFalse(article.is_published())
+
     def test_get_absolute_url(self):
-        article = mommy.make('djblog.Article', title='i-win')
+        article = mommy.make('djblog.Article', title='i win')
         self.assertEqual('/i-win/', article.get_absolute_url())
 
     def test_published_body(self):
