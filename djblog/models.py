@@ -53,7 +53,7 @@ class Article(TimeStampedModel):
         return reverse('blog_article', kwargs={'slug': self.slug})
 
     def published_body(self):
-        md = Markdown()
+        md = Markdown(extras=['fenced-code-blocks'])
         return md.convert(self.body)
 
     def __str__(self):
