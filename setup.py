@@ -26,7 +26,8 @@ setup(
     install_requires=[
         'django>=1.5',
         'django-extensions==1.3.3',
-        'markdown2==2.2.0'
+        'markdown2==2.2.0',
+        'Pygments==1.6'
     ],
     zip_safe=False,
     keywords='django blog',

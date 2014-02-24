@@ -12,7 +12,7 @@ settings.configure(
             "NAME": ":memory:",
         },
     },
-    ROOT_URLCONF="djblog.urls",
+    ROOT_URLCONF="tests.urls",
     INSTALLED_APPS=[
         "django.contrib.sites",
         "djblog",

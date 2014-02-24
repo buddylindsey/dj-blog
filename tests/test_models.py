@@ -27,7 +27,7 @@ class ArticleTest(TestCase):
 
     def test_get_absolute_url(self):
         article = mommy.make('djblog.Article', title='i win')
-        self.assertEqual('/i-win/', article.get_absolute_url())
+        self.assertEqual('/test/i-win/', article.get_absolute_url())
 
     def test_published_body(self):
         article = mommy.make('djblog.Article', body='hello')

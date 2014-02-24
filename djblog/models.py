@@ -50,10 +50,11 @@ class Article(TimeStampedModel):
         return self.status == PUBLISHED
 
     def get_absolute_url(self):
-        return reverse('blog_article', kwargs={'slug': self.slug})
+        return reverse('djblog:article', kwargs={'slug': self.slug})
 
     def published_body(self):
-        md = Markdown(extras=['fenced-code-blocks'])
+        md = Markdown(
+            extras=['fenced-code-blocks', 'cuddled-lists', 'code-friendly'])
         return md.convert(self.body)
 
     def __str__(self):
@@ -68,6 +69,9 @@ class Category(models.Model):
     name = models.CharField(max_length=50)
     slug = AutoSlugField(_('slug'), populate_from='name')
     articles = models.ManyToManyField(Article, related_name='categories')
+
+    def get_absolute_url(self):
+        return reverse('djblog:category', kwargs={'slug': self.slug})
 
     def __str__(self):
         return self.name
