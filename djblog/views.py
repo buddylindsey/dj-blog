@@ -1,10 +1,10 @@
 from django.views.generic import ListView, DetailView
 
 from djblog.models import Article
-from djblog.mixins import CategoryMixin, CategoryListMixin, PagedViewMixin
+from djblog.mixins import CategoryMixin, CategoryListMixin
 
 
-class IndexView(CategoryListMixin, PagedViewMixin, ListView):
+class IndexView(CategoryListMixin, ListView):
     model = Article
     paginate_by = 10
     context_object_name = 'articles'
@@ -18,7 +18,7 @@ class ArticleView(CategoryListMixin, DetailView):
     template_name = 'djblog/detail.html'
 
 
-class CategoryView(CategoryListMixin, CategoryMixin, PagedViewMixin, ListView):
+class CategoryView(CategoryListMixin, CategoryMixin, ListView):
     model = Article
     paginate_by = 10
     context_object_name = 'articles'

@@ -21,11 +21,3 @@ class CategoryListMixin(object):
         context = super(CategoryListMixin, self).get_context_data(**kwargs)
         context['categories'] = Category.objects.all()
         return context
-
-
-class PagedViewMixin(object):
-    def get_context_data(self, **kwargs):
-        context = super(PagedViewMixin, self).get_context_data(**kwargs)
-        context['page'] = context['paginator'].page(
-            self.request.GET.get('page', '1'))
-        return context
