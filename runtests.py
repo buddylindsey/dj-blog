@@ -14,7 +14,10 @@ settings.configure(
     },
     ROOT_URLCONF="tests.urls",
     INSTALLED_APPS=[
+        "django.contrib.auth",
         "django.contrib.sites",
+        "django.contrib.sessions",
+        "django.contrib.contenttypes",
         "djblog",
     ],
     SITE_ID=1,

@@ -2,7 +2,7 @@ import mox
 
 from django.test import TestCase
 
-from markdown2 import Markdown
+from mistune import Markdown
 from model_mommy import mommy
 
 from djblog.models import Article
@@ -32,8 +32,8 @@ class ArticleTest(TestCase):
     def test_published_body(self):
         article = mommy.make('djblog.Article', body='hello')
 
-        self.mock.StubOutWithMock(Markdown, 'convert')
-        Markdown.convert('hello').AndReturn('converted text')
+        self.mock.StubOutWithMock(Markdown, 'render')
+        Markdown.render('hello').AndReturn('converted text')
 
         self.mock.ReplayAll()
         a = article.published_body()

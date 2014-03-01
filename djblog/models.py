@@ -3,10 +3,12 @@ from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.utils.encoding import python_2_unicode_compatible
 
-from markdown2 import Markdown
+from mistune import Markdown
 
 from django_extensions.db.fields import AutoSlugField
 from django_extensions.db.models import TimeStampedModel
+
+from djblog.utils import SyntaxHighlightRenderer
 
 DRAFT = 0
 PUBLISHED = 1
@@ -53,9 +55,15 @@ class Article(TimeStampedModel):
         return reverse('djblog:article', kwargs={'slug': self.slug})
 
     def published_body(self):
-        md = Markdown(
-            extras=['fenced-code-blocks', 'cuddled-lists', 'code-friendly'])
-        return md.convert(self.body)
+        md = Markdown(renderer=SyntaxHighlightRenderer())
+        return md.render(self.body)
+
+    def primary_category(self):
+        categories = self.categories.all()
+        if categories:
+            return categories[0]
+
+        return ''
 
     def __str__(self):
         return self.title

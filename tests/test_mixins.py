@@ -1,6 +1,8 @@
 import mox
 
+from django.http import Http404
 from django.test import TestCase
+from django.test.client import RequestFactory
 from django.views.generic import TemplateView
 
 from model_mommy import mommy
@@ -30,7 +32,7 @@ class CategoryMixinTest(TestCase):
         self.assertEqual(c, category)
 
 
-class CategoryListMixinTest(object):
+class CategoryListMixinTest(TestCase):
     class TestView(CategoryListMixin, TemplateView):
         pass
 

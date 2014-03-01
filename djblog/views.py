@@ -1,7 +1,7 @@
 from django.views.generic import ListView, DetailView
 
 from djblog.models import Article
-from djblog.mixins import CategoryMixin, CategoryListMixin
+from djblog.mixins import CategoryMixin, CategoryListMixin, SuperUserMixin
 
 
 class IndexView(CategoryListMixin, ListView):
@@ -16,6 +16,10 @@ class ArticleView(CategoryListMixin, DetailView):
     model = Article
     context_object_name = 'article'
     template_name = 'djblog/detail.html'
+
+
+class ArticlePreviewView(SuperUserMixin, ArticleView):
+    pass
 
 
 class CategoryView(CategoryListMixin, CategoryMixin, ListView):
