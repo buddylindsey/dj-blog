@@ -52,4 +52,13 @@ Add to the urls.py:
 
     url(r'^blog/', include('djblog.urls', namespace="djblog")),
 
-Finally, you need to writey our own templates and put them in djblog/ in your templates folder.
+Finally, you need to write your own templates and put them in djblog/ in your templates folder.
+
+
+Changelog
+---------
+
+v 0.2.5
+1. Changed to ``mistune`` markdown converter
+2. Added ``primary_category`` method to article
+3. Added start to a preview ability of articles
