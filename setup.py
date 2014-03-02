@@ -23,6 +23,8 @@ setup(
     packages=[
         'djblog',
     ],
+    package_dir={'djblog': 'djblog'},
+    include_package_data=True,
     install_requires=[
         'django>=1.5',
         'django-extensions==1.3.3',
