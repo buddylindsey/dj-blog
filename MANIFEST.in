@@ -1,0 +1,1 @@
+recursive-include djblog *.html *.png *.gif *.py
