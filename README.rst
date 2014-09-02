@@ -58,6 +58,10 @@ Finally, you need to write your own templates and put them in djblog/ in your te
 Changelog
 ---------
 
+v 0.3
+1. Added switch to use jinja templates if django_jinja is installed
+2. Fix bug in showing only published articles in category views
+
 v 0.2.5
 1. Changed to ``mistune`` markdown converter
 2. Added ``primary_category`` method to article

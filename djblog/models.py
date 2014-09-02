@@ -10,13 +10,10 @@ from django_extensions.db.models import TimeStampedModel
 
 from djblog.utils import SyntaxHighlightRenderer
 
-DRAFT = 0
-PUBLISHED = 1
-
 
 class ArticleQueryset(models.query.QuerySet):
     def published(self):
-        return self.filter(status=PUBLISHED)
+        return self.filter(status=Article.PUBLISHED)
 
 
 class ArticleManager(models.Manager):
@@ -42,6 +39,8 @@ class Article(TimeStampedModel):
 
     slug = AutoSlugField(_('slug'), populate_from='title')
 
+    DRAFT = 0
+    PUBLISHED = 1
     STATUS_CHOICES = ((DRAFT, _('draft')), (PUBLISHED, _('published')))
     status = models.IntegerField(
         _('status'), choices=STATUS_CHOICES, default=DRAFT)
@@ -49,7 +48,7 @@ class Article(TimeStampedModel):
     objects = ArticleManager()
 
     def is_published(self):
-        return self.status == PUBLISHED
+        return self.status == self.PUBLISHED
 
     def get_absolute_url(self):
         return reverse('djblog:article', kwargs={'slug': self.slug})

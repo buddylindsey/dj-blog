@@ -1,6 +1,15 @@
 from django.http import Http404
+from django.conf import settings
 
 from djblog.models import Category
+
+
+class JinjaMixin(object):
+    def get_template_names(self):
+        if 'django_jinja' in settings.INSTALLED_APPS:
+            return ['{template}.jinja'.format(template=self.template_name)]
+        else:
+            return ['{template}.html'.format(template=self.template_name)]
 
 
 class CategoryMixin(object):
