@@ -29,7 +29,7 @@ setup(
         'django>=1.5',
         'django-extensions==1.3.3',
         'mistune==0.1.0',
-        'Pygments==1.6'
+        'Pygments==2.7.4'
     ],
     zip_safe=False,
     keywords='django blog',
